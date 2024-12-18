@@ -1,0 +1,24 @@
+@model Kahveci.Models.Ingredient
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Stok Güncelle</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Malzeme Adı</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" readonly />
+    </div>
+    <div class="form-group">
+        <label for="StockQuantity">Mevcut Stok</label>
+        <input type="number" class="form-control" id="StockQuantity" name="StockQuantity" value="@Model.StockQuantity" />
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+
+<!-- Geri dönmek için buton -->
+<div>
+    <a href="@Url.Action("Manage", "Stock")" class="btn btn-secondary">Stok Yönetimine Geri Dön</a>
+</div>

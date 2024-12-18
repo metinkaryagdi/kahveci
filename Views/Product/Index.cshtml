@@ -1,0 +1,25 @@
+@model IEnumerable<Kahveci.Models.Products>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Ürünler</h2>
+
+<a href="@Url.Action("Create", "Product")" class="btn btn-primary">Yeni Ürün Ekle</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Stok Miktarı</th>
+            <th>Kategori</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+</table>

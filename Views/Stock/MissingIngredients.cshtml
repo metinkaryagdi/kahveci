@@ -1,0 +1,19 @@
+@model List<string>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Eksik Malzemeler</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+<!-- Geri dönmek için buton -->
+<div>
+    <a href="@Url.Action("Manage", "Stock")" class="btn btn-primary">Stok Yönetimine Geri Dön</a>
+</div>

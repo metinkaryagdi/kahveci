@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Kahveci.Models.Products>
+
+@{
+    Layout = "_ProductLayout";
+}
+
+<h1>Kahveci Anasayfa</h1>
+
+<partial name="_Banner" />
+
+<h1>Örnek Ürünler</h1>
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        var favoriteProductIds = ViewData["FavoriteProductIds"] as List<int>;
+
+        @foreach (var product in Model)
+        {
+            bool isFavorite = favoriteProductIds != null && favoriteProductIds.Contains(product.ProductId);
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="Ürün Resmi">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <p class="card-text">@product.ProductDescription</p>
+                        <p class="card-price">₺@product.Price</p>
+                        <p class="card-category">@product.ProductCategories.CategoryName</p>
+                        <a href="@Url.Action("AddToCart", "Cart", new { productId = product.ProductId })"
+                            class="btn btn-primary">Sepete Ekle</a>
+                        <button type="button" class="btn btn-link text-warning" id="star-button-@product.ProductId" onclick="toggleFavorite(@product.ProductId)">
+                            <i class="fas fa-star" id="star-icon-@product.ProductId" style="color: @(isFavorite ? "gold" : "gray")"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+    else
+    {
+        <p>Ürün bulunmamaktadır.</p>
+    }
+</div>
+
+<script>
+    function toggleFavorite(productId) {
+        var starIcon = document.getElementById('star-icon-' + productId);
+        var starButton = document.getElementById('star-button-' + productId);
+        if (starIcon.style.color === 'gray') {
+            starIcon.style.color = 'gold';
+            $.post('@Url.Action("AddToFavorite", "Favorite")', { productId: productId }, function (response) {
+            });
+        } else {
+            starIcon.style.color = 'gray';
+            $.post('@Url.Action("RemoveFromFavorite", "Favorite")', { productId: productId }, function (response) {
+            });
+        }
+    }
+</script>

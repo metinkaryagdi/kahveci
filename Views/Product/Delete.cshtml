@@ -1,0 +1,24 @@
+@model Kahveci.Models.Products
+
+@{
+    ViewData["Title"] = "Ürün Silme";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Ürünü Silmek Üzeresiniz</h4>
+<hr />
+<div>
+    <h5>Ürün Adı: @Model.ProductName</h5>
+    <p>Bu ürünü silmek istediğinizden emin misiniz?</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Hayır, Geri</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

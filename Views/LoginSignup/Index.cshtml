@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "_LoginSignupLayout";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+<body>
+    <header>
+        <h1>Hoşgeldiniz!</h1>
+        <p>Giriş yapın veya üye olun, alışverişe hemen başlayın!</p>
+    </header>
+
+    <main>
+        <div class="landing-page">
+            <div class="intro">
+                <h2>Hoşgeldiniz</h2>
+                <p>Alışveriş yapmak için müşteri olarak giriş yapın veya kayıt olun. Çalışan olarak giriş yapmak için "Çalışan Girişi"ne tıklayın.</p>
+            </div>
+
+            <div class="auth-actions">
+                <h3>Müşteri Girişi:</h3>
+                <p>
+                    <a href="~/LoginSignup/LogIn">Giriş Yap</a> veya
+                    <a href="~/LoginSignup/SignUp">Üye Ol</a>
+                </p>
+                <h3>Çalışan Girişi:</h3>
+                <p>
+                    <a href="~/LoginSignup/EmployeeLogIn">Çalışan Girişi</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-ticaret Sitesi</p>
+    </footer>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>

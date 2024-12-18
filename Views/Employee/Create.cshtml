@@ -1,0 +1,52 @@
+@model Kahveci.Models.Products
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Yeni Ürün Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="ProductName">Ürün Adı</label>
+        <input type="text" id="ProductName" name="ProductName" class="form-control" required />
+        @if (ViewData.ModelState["ProductName"]?.Errors.Count > 0)
+        {
+            <span class="text-danger">@ViewData.ModelState["ProductName"].Errors[0].ErrorMessage</span>
+        }
+    </div>
+
+    <div class="form-group">
+        <label for="ProductDescription">Açıklama</label>
+        <textarea id="ProductDescription" name="ProductDescription" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Price">Fiyat</label>
+        <input type="number" id="Price" name="Price" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="StockQuantity">Stok Miktarı</label>
+        <input type="number" id="StockQuantity" name="StockQuantity" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ProductCategoriesId">Kategori</label>
+        <select id="ProductCategoriesId" name="ProductCategoriesId" class="form-control" required>
+            <option value="">Kategori Seçiniz</option>
+            @foreach (var category in ViewBag.Categories as IEnumerable<Kahveci.Models.ProductCategories>)
+            {
+                <option value="@category.CategoryId">@category.CategoryName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Ürünü Ekle</button>
+    </div>
+</form>
+
+<div>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Ürünler Listesine Geri Dön</a>
+</div>

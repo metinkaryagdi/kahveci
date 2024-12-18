@@ -1,0 +1,53 @@
+@{
+    var categories = ViewBag.Categories as List<Kahveci.Models.ProductCategories>;
+}
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kahveci</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="groupDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Kategoriler
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="groupDropdown">
+                        @if (categories != null && categories.Any())
+                        {
+                            @foreach (var category in categories)
+                            {
+                                <li><a class="dropdown-item"
+                                        href="/Product/ByCategory/@category.CategoryId">@category.CategoryName</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" href="#">Kategori yok</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Favorite/Index">Favoriler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Cart/Index">Sepet</a>
+                </li>
+                <ul class="navbar-nav ms-auto"> 
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="LogOut" asp-controller="LoginSignup">Çıkış Yap</a>
+                    </li>
+                </ul>
+
+            </ul>
+        </div>
+    </div>
+</nav>

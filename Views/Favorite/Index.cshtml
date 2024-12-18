@@ -1,0 +1,49 @@
+@model List<Kahveci.Models.Favorites>
+
+@{
+    Layout = "_ProductLayout";
+}
+
+<h2>Favorilerim</h2>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var favorite in Model)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="@favorite.Products.ImageUrl" class="card-img-top" alt="Ürün Resmi">
+                    <div class="card-body">
+                        <h5 class="card-title">@favorite.Products.ProductName</h5>
+                        <p class="card-text">@favorite.Products.ProductDescription</p>
+                        <p class="card-price">₺@favorite.Products.Price</p>
+
+                        <a href="@Url.Action("AddToCart", "Cart", new { productId = favorite.ProductId })" class="btn btn-primary">Sepete Ekle</a>
+
+                        <form method="post" asp-action="RemoveFromFavorites" asp-controller="Favorite" class="float-end mt-2" id="favorite-form-@favorite.ProductId">
+                            <input type="hidden" name="favoriteId" value="@favorite.FavoriteId" />
+                            <button type="submit" class="btn btn-link text-warning" id="star-button-@favorite.ProductId">
+                                <i class="fas fa-star" style="color: @((ViewBag.Favorites.Contains(favorite)) ? "gold" : "gray")" onclick="removeFromFavorites(@favorite.ProductId)"></i> 
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Favori ürününüz yok.</p>
+}
+
+<script>
+    function removeFromFavorites(productId) {
+        const starIcon = document.querySelector(`#star-button-${productId} i`);
+        starIcon.style.color = 'gray';
+
+        const form = document.getElementById(`favorite-form-${productId}`);
+        form.submit();
+    }
+</script>

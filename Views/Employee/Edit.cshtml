@@ -1,0 +1,27 @@
+@model Kahveci.Models.Employee
+@{
+    Layout="_EmployeeLayout";
+}
+<h1>Edit Employee</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="EmployeeId" />
+    <div class="form-group">
+        <label asp-for="EmployeeName"></label>
+        <input asp-for="EmployeeName" class="form-control" />
+        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmployeeEmail"></label>
+        <input asp-for="EmployeeEmail" class="form-control" />
+        <span asp-validation-for="EmployeeEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmployeePhone"></label>
+        <input asp-for="EmployeePhone" class="form-control" />
+        <span asp-validation-for="EmployeePhone" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>

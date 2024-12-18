@@ -1,0 +1,62 @@
+@{
+    Layout = "_EmployeeLayout";
+}
+
+<h1>Çalışan Yönetim Paneli</h1>
+
+<div class="dashboard">
+    <h3>Hoşgeldiniz</h3>
+
+    <p>Bu panel üzerinden aşağıdaki işlemleri gerçekleştirebilirsiniz:</p>
+
+    <div class="dashboard-actions">
+        <h4>Yapılacak İşlemler:</h4>
+        <ul>
+            <li><a href="/Product/Index">Ürünleri Görüntüle ve Düzenle</a></li>
+            <li><a href="/Orders/Index">Siparişleri Yönet</a></li>
+            <li><a href="/Stock/Manage">Stok Yönetimi</a></li>
+            <li><a href="/Employee/Manage">Çalışanları Yönet</a></li>
+            <!-- Diğer yönetim işlemleri -->
+        </ul>
+    </div>
+
+    <div class="logout">
+        <p><a href="/LoginSignup/LogOut">Çıkış Yap</a></p>
+    </div>
+</div>
+
+<style>
+    .dashboard {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        margin-top: 20px;
+    }
+
+    .dashboard h3 {
+        color: #333;
+    }
+
+    .dashboard-actions ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .dashboard-actions ul li {
+        margin: 10px 0;
+    }
+
+    .dashboard-actions ul li a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .dashboard-actions ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .logout {
+        margin-top: 20px;
+    }
+</style>

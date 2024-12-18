@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Kartın arka planı ve genel stil */
+.card {
+  background-image: url('/images/BackGroundsİmages/CardArkaPlan.jpg'); 
+  background-size: cover;
+  background-position: center;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* Kartın köşelerini yuvarla */
+}
+
+/* Kartın üzerine gelindiğinde hareket */
+.card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+/* Yıldız ikonu için buton stil */
+.card-body .btn-link {
+  padding: 0; /* Butonun çevresindeki boşluğu kaldır */
+  font-size: 1.5em; /* Yıldız boyutunu büyüt */
+  color: #fff; /* Yıldızın rengini beyaz yap */
+  position: absolute;
+  top: 10px; /* Kartın üst kenarına yakın */
+  right: 10px; /* Kartın sağ kenarına yakın */
+  z-index: 10; /* Yıldızın kartın diğer öğelerinin üstünde olmasını sağlar */
+  background: transparent; /* Arka planı kaldır */
+  border: none; /* Çerçeveyi kaldır */
+}
+
+.card-body .btn-link:hover {
+  color: #ffcc00; /* Hover durumunda yıldızın rengini sarı yap */
+}
+
+/* Kartın içeriği */
+.card-body {
+  background: rgba(0, 0, 0, 0.3); /* Kartın iç kısmına yarı saydam bir arka plan ekleyerek okunabilirliği artırır */
+  color: white; /* Metin rengini beyaz yaparak kontrastı artırır */
+  padding: 15px; /* İçeriğe biraz daha boşluk ekler */
+  border-radius: 10px; /* İç kısmın da yuvarlak olması için */
+}
+
+/* Başlık ve açıklama fontları */
+.card-title {
+  font-size: 1.25rem; /* Başlık boyutunu artır */
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem; /* Metin boyutunu biraz küçült */
+}
+
+/* Ürün fiyatı ve kategori bilgisi */
+.card-price, .card-category {
+  font-size: 0.9rem; /* Küçük font boyutu */
+  color: #f8f9fa; /* Açık renk */
+}
+
+/* Favorilere ekle butonunun stili */
+.card-body form {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.card-body form button {
+  background-color: #ffcc00; /* Sarı renk */
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.card-body form button:hover {
+  background-color: #f0b800; /* Hoverda sarı rengin tonu */
+}
+
+/* Genel butonlar */
+.btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
